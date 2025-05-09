@@ -40,6 +40,7 @@ export class BoardComponent implements OnInit {
     this.winner = null;
     this.xIsNext = true;
     this.isGameOver = false;
+    console.log(this.score);
   }
 
   get player() {
@@ -71,6 +72,10 @@ export class BoardComponent implements OnInit {
     
     if (this.calculateWinner() != "tie"){
       this.winner = this.calculateWinner();
+      if (this.winner != null && this.score != undefined){
+        let currentWinnerScore = Number(this.score.get(this.winner));
+        this.score.set(this.winner,currentWinnerScore+1);
+      }
     }else{
       this.isGameOver = true;
     } 
@@ -83,19 +88,22 @@ export class BoardComponent implements OnInit {
 
   startTwoPlayers(){
     this.newGame();
+    this.score = new Map([
+      ['X', 0],
+      ['O', 0]
+    ]);
     this.isBotGame = false;
   }
   startPlayerVsBot(){
     this.newGame();
+    this.score = new Map([
+      ['X', 0],
+      ['O', 0]
+    ]);
     this.isBotGame = true;
   }
 
   playBot(){
-    if (this.winner != null && this.score != undefined){
-      let currentWinnerScore = Number(this.score.get(this.winner));
-      this.score.set(this.winner,currentWinnerScore+1);
-      console.log(this.score);
-    }
     let indexAdv = Number(this.bestMove());    
     if (this.squares && !this.squares[indexAdv]) {
       this.squares.splice(indexAdv, 1, this.player);
@@ -103,6 +111,10 @@ export class BoardComponent implements OnInit {
     }
     if (this.calculateWinner() != "tie"){
         this.winner = this.calculateWinner();
+        if (this.winner != null && this.score != undefined){
+          let currentWinnerScore = Number(this.score.get(this.winner));
+          this.score.set(this.winner,currentWinnerScore+1);
+        }
     } else{
       this.isGameOver = true;
     }
