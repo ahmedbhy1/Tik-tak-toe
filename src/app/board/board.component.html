@@ -1,21 +1,31 @@
-<h1>Current Player: {{ player }} </h1>
+<div class="content">
+    <div>
+        <h1>Select Game Mode</h1>
+        <button (click)="startTwoPlayers()">2 Players</button>
+        <button (click)="startPlayerVsBot()">Player vs Bot</button>
+    </div>
+    <div>
+        <h1>Current Player: {{ player }} </h1>
 
-<button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
+        <button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
 
 
-<h2 *ngIf="winner">
-    Player {{ winner }} won the game!
-</h2>
+        <h2 *ngIf="winner">
+            Player {{ winner }} won the game!
+        </h2>
+        <h2 *ngIf="isGameOver">
+            Game Over!
+        </h2>
+        <main>
+    
+            <app-square 
+                *ngFor="let val of squares; let i = index" 
+                [value]="val"
+                (click)="makeMove(i)"> 
 
-
-<main>
-    <app-square 
-        *ngFor="let val of squares; let i = index" 
-        [value]="val"
-        (click)="makeMove(i)"> 
-
-    </app-square>
-</main>
-
+            </app-square>
+        </main>
+        </div>
+</div>
 
 

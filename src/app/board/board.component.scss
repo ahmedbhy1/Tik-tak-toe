@@ -5,6 +5,45 @@ main {
 }
   
 app-square {
-    border: 1px rgb(250, 43, 6) solid;
+    border: 1px rgb(80, 192, 95) solid;
     height: 200px;
 }
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  :host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+  }
+  
+  button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+  
