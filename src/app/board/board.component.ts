@@ -15,8 +15,9 @@ export class BoardComponent implements OnInit {
   isBotGame : boolean = false;
   isGameOver: boolean = false;
   human : string = 'X';
-  currentPlayer :string = this.human;
   ai :string = 'O';
+  currentPlayer :string = this.human;
+
 
   score : Map<string,number> = new Map([
     ['X', 0],
@@ -40,7 +41,6 @@ export class BoardComponent implements OnInit {
     this.winner = null;
     this.xIsNext = true;
     this.isGameOver = false;
-    console.log(this.score);
   }
 
   get player() {
@@ -53,7 +53,6 @@ export class BoardComponent implements OnInit {
       return -1;
     }
     for (let i = 0; i < this.squares.length; i++) {
-      console.log("i=", i);
       if (this.squares[i] == null) {
         return i;
       }
@@ -67,7 +66,7 @@ export class BoardComponent implements OnInit {
     if (this.squares && !this.squares[idx]) {
       this.squares.splice(idx, 1, this.player);
       this.xIsNext = !this.xIsNext;
-    }
+    
     
     
     if (this.calculateWinner() != "tie"){
@@ -82,7 +81,7 @@ export class BoardComponent implements OnInit {
     if(this.isBotGame){
       this.playBot();
     }
-    
+  }
 
   }
 
@@ -199,8 +198,7 @@ export class BoardComponent implements OnInit {
         // Is the spot available?
         if (board[i] == null) {
           board[i] = this.ai;
-          let score = this.minimax(board, 0, false);
-          console.log("score of this i:", i ,score);         
+          let score = this.minimax(board, 0, false);       
           board[i] = null;
           if (score > bestScore) {
             bestScore = score;

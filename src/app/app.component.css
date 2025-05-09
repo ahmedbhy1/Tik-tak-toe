@@ -1,0 +1,16 @@
+main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: inherit;
+    position: relative;
+  }
+  
+  app-board {
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+  

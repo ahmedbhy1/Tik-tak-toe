@@ -6,8 +6,8 @@
     </div>
     <div>
         <h1>Current Player: {{ player }} </h1>
-        <h2 *ngIf="isBotGame">Current games scores: You {{ score.get('X') }} The Bot {{ score.get('O') }}</h2>
-        <h2 *ngIf="!isBotGame">Current games scores: Player X {{ score.get('X') }} Player O {{ score.get('O') }}</h2>
+        <h2 *ngIf="isBotGame">Current games scores: You : {{ score.get('X') }} | The Bot : {{ score.get('O') }}</h2>
+        <h2 *ngIf="!isBotGame">Current games scores: Player X : {{ score.get('X') }} | Player O : {{ score.get('O') }}</h2>
 
         <button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
 
